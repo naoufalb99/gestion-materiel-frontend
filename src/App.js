@@ -1,14 +1,15 @@
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 
-import Login from './pages/login';
+import Login from './pages/login'
+import Layout from './components/layout'
 
 // TODO: 
 export const Home = () => {
   return (
-    <div>
+    <Layout>
       <h2>Home Page</h2>
       <Link to='/login'>go to login page (Link) </Link>
-    </div>
+    </Layout>
   )
 }
 
