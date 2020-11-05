@@ -1,6 +1,6 @@
 import React from 'react'
 import { createUseStyles } from 'react-jss'
-import Header from '../header';
+import Header from '../Header';
 
 const useStyles = createUseStyles({
 

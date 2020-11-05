@@ -1,7 +1,7 @@
 import React from 'react'
 import { createUseStyles } from 'react-jss'
-import Avatar from './avatar'
-import SearchBar from './searchBar'
+import Avatar from './Avatar'
+import SearchBar from './SearchBar'
 
 const useStyles = createUseStyles({
     header: {

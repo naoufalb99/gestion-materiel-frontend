@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 
-import Login from './pages/login'
-import Layout from './components/layout'
+import Login from './pages/Login'
+import Layout from './components/Layout'
 
 // TODO: 
 export const Home = () => {
