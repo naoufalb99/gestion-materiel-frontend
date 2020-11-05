@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { createUseStyles } from 'react-jss'
 import Avatar from './Avatar'
+import DropDown from './DropDown'
 import SearchBar from './SearchBar'
 
 const useStyles = createUseStyles({
@@ -39,6 +40,7 @@ const useStyles = createUseStyles({
         }
     },
     profile: {
+        position: 'relative',
         '& > *': {
             verticalAlign: 'middle'
         }
@@ -53,6 +55,7 @@ const useStyles = createUseStyles({
 
 const Header = () => {
     const classes = useStyles()
+    const [profileDropDownIsOpen, setProfileDropDownIsOpen] = useState(false)
 
     return (
         <header className={classes.header}>
@@ -65,8 +68,9 @@ const Header = () => {
                         <path d="M9 17v1a3 3 0 0 0 6 0v-1" />
                     </svg>
                 </div>
-                <div className={classes.profile}>
+                <div className={classes.profile} onClick={(e) => setProfileDropDownIsOpen(!profileDropDownIsOpen)}>
                     <Avatar size={48} /> <span className={classes.profileName}>Naoufal B.</span>
+                    <DropDown isOpen={profileDropDownIsOpen} onClose={() => setProfileDropDownIsOpen(false)} />
                 </div>
             </div>
         </header>
