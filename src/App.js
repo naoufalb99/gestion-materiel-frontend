@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 
 import Login from "./pages/Login";
 import Layout from "./components/Layout";
@@ -6,7 +6,9 @@ import Layout from "./components/Layout";
 // TODO:
 export const Home = () => {
   return (
-    <Layout>{/* <Link to="/login">go to login page (Link) </Link> */}</Layout>
+    <Layout>
+      <h1>Dashboard.</h1>
+    </Layout>
   );
 };
 
