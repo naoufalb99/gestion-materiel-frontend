@@ -5,8 +5,7 @@ import Sidebar from "../Sidebar";
 
 const useStyles = createUseStyles({
   inner: {
-    marginLeft: 232,
-    marginTop: 32
+    margin: '32px 32px 0 232px'
   }
 });
 
