@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import React from "react";
 import { createUseStyles } from "react-jss";
 import { IconApps, IconCirclePlus, IconHome, IconLogout } from "tabler-icons";
+import routes from "../../config/routes";
 
 const useStyles = createUseStyles({
   container: {
@@ -63,7 +64,7 @@ const Sidebar = () => {
     <div className={classes.container}>
       <ul className={classes.navMenu}>
         <li>
-          <NavLink to="/" activeClassName="selected">
+          <NavLink to={routes.HOME.path} activeClassName="selected">
             <div className="svg">
               <IconHome stroke={1.5} size={33} />
             </div>
@@ -71,7 +72,7 @@ const Sidebar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/login" activeClassName="selected">
+          <NavLink to={routes.LOGIN.path} activeClassName="selected">
             <div className="svg">
               <IconCirclePlus stroke={1.5} size={33} />
             </div>
@@ -79,7 +80,7 @@ const Sidebar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/login" activeClassName="selected">
+          <NavLink to={routes.LOGIN.path} activeClassName="selected">
             <div className="svg">
               <IconApps stroke={1.5} size={33} />
             </div>
@@ -87,7 +88,7 @@ const Sidebar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/login" activeClassName="selected">
+          <NavLink to={routes.LOGIN.path} activeClassName="selected">
             <div className="svg">
               <IconLogout stroke={1.5} size={33} />
             </div>
