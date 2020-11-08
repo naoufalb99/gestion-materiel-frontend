@@ -64,7 +64,7 @@ const Sidebar = () => {
     <div className={classes.container}>
       <ul className={classes.navMenu}>
         <li>
-          <NavLink to={routes.HOME.path} activeClassName="selected">
+          <NavLink to={routes.HOME.path} activeClassName="selected" exact>
             <div className="svg">
               <IconHome stroke={1.5} size={33} />
             </div>
@@ -72,7 +72,7 @@ const Sidebar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to={routes.LOGIN.path} activeClassName="selected">
+          <NavLink to={routes.ADMIN_ARTICLES.path} activeClassName="selected">
             <div className="svg">
               <IconCirclePlus stroke={1.5} size={33} />
             </div>
