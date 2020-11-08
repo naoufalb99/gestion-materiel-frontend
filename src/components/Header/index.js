@@ -75,8 +75,8 @@ const Header = () => {
                 <div className={[classes.notifications, 'active'].join(' ')}>
                     <IconBell stroke={1.5} size={null} />
                 </div>
-                <div className={classes.profile} onClick={(e) => setProfileDropDownIsOpen(!profileDropDownIsOpen)}>
-                    <div className={classes.profileInner}>
+                <div className={classes.profile}>
+                    <div className={classes.profileInner} onClick={() => setProfileDropDownIsOpen(!profileDropDownIsOpen)}>
                         <Avatar size={48} /> <span className={classes.profileName}>Naoufal B.</span>
                     </div>
                     <DropDown isOpen={profileDropDownIsOpen} onClose={() => setProfileDropDownIsOpen(false)} />
