@@ -2,7 +2,7 @@ import Articles from "../pages/admin/Articles";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 
-export default {
+const routes = {
   HOME: {
     path: "/",
     component: Home,
@@ -17,3 +17,5 @@ export default {
     component: Articles,
   },
 };
+
+export default routes;
