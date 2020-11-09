@@ -1,4 +1,5 @@
 import Articles from "../pages/admin/Articles";
+import AddArticle from "../pages/admin/Articles/AddArticle";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 
@@ -12,9 +13,16 @@ const routes = {
     path: "/login",
     component: Login,
   },
+
+  // Admin Articles
   ADMIN_ARTICLES: {
-    path: "/articles",
+    path: "/admin/articles",
     component: Articles,
+    exact: true,
+  },
+  ADMIN_ARTICLES_ADD: {
+    path: "/admin/articles/add",
+    component: AddArticle,
   },
 };
 

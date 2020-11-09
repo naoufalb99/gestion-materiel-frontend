@@ -1,10 +1,15 @@
 import React from "react";
-import Layout from "../../../components/Layout";
+import Button from "../../../components/Button";
+import PageHeading from "../../../components/PageHeading";
 import { Table, Td, Tr, Th } from "../../../components/Table";
+import routes from "../../../config/routes";
 
 const Articles = () => {
   return (
-    <Layout>
+    <>
+      <PageHeading title="Articles">
+        <Button to={routes.ADMIN_ARTICLES_ADD.path}>Add Article</Button>
+      </PageHeading>
       <Table>
         <Tr>
           <Th>ID</Th>
@@ -37,7 +42,7 @@ const Articles = () => {
           <Td>test3</Td>
         </Tr>
       </Table>
-    </Layout>
+    </>
   );
 };
 
