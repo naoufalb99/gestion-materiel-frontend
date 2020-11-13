@@ -1,15 +1,19 @@
 import { BrowserRouter } from "react-router-dom";
 import Routes from "./Routes";
 import routes from "./config/routes";
-import DefaultLayout from "./components/Layout";
+import AuthenticatedLayout from "./components/Layout/AuthenticatedLayout";
+import { Provider } from "react-redux";
+import store from "./store";
 
 function App() {
   return (
-    <BrowserRouter>
-      <DefaultLayout>
-        <Routes routes={routes} />
-      </DefaultLayout>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <AuthenticatedLayout>
+          <Routes routes={routes} />
+        </AuthenticatedLayout>
+      </BrowserRouter>
+    </Provider>
   );
 }
 
