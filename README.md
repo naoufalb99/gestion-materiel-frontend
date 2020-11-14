@@ -1,3 +1,3 @@
-# Gestion matériels(client)
+# Gestion matériel(client)
 
 Project under development.
