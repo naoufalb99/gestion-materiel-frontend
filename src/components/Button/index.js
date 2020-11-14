@@ -26,12 +26,12 @@ const useStyles = createUseStyles({
 
 const Button = ({ className, ...props }) => {
   const classes = useStyles();
-  className = clsx(className, classes.button);
+  className = clsx(classes.button, className);
   const { to } = props;
   if (to) {
     return <Link {...{ className, ...props }} />;
   }
-  return <button {...props} className={classes.button} />;
+  return <button {...{ className, ...props }} />;
 };
 
 export default Button;

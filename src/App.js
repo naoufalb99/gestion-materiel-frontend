@@ -4,6 +4,7 @@ import routes from "./config/routes";
 import AuthenticatedLayout from "./components/Layout/AuthenticatedLayout";
 import { Provider } from "react-redux";
 import store from "./store";
+import "./utils/axios";
 
 function App() {
   return (

@@ -16,6 +16,12 @@ const useStyles = createUseStyles({
   form: {
     width: 360,
   },
+  submit: {
+    fontSize: 14,
+    height: 40,
+    width: "100%",
+    marginTop: 8,
+  },
   inputGroup: {
     marginBottom: 16,
     "& label > p": {
@@ -47,22 +53,14 @@ const Login = () => {
     <div className={classes.container}>
       <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
         <InputGroup label="Email Adress">
-          <Input
-            type="text"
-            name="email"
-            defaultValue="naoufalb99@gmail.com"
-            innerRef={register}
-          />
+          <Input type="text" name="email" innerRef={register} />
         </InputGroup>
         <InputGroup label="Password">
-          <Input
-            type="password"
-            name="password"
-            defaultValue="123123"
-            innerRef={register}
-          />
+          <Input type="password" name="password" innerRef={register} />
         </InputGroup>
-        <Button type="submit">Login</Button>
+        <Button type="submit" className={classes.submit}>
+          Login
+        </Button>
       </form>
     </div>
   );
