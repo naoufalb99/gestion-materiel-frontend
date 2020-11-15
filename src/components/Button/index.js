@@ -25,6 +25,7 @@ const useStyles = createUseStyles({
     },
   },
   disabledButton: {
+    opacity: 0.7,
     cursor: "not-allowed",
     pointerEvents: "none",
     "&:hover": {

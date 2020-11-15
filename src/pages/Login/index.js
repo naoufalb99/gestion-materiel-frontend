@@ -77,7 +77,11 @@ const Login = () => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.loaders.auth.login);
 
-  const { handleSubmit, register } = useForm();
+  const { handleSubmit, register, formState } = useForm({
+    mode: "onChange",
+  });
+
+  const { isValid } = formState;
 
   const onSubmit = ({ email, password, rememberMe }) => {
     dispatch(login(email, password, rememberMe));
@@ -97,11 +101,15 @@ const Login = () => {
               type="email"
               name="email"
               defaultValue="naoufalb99@gmail.com"
-              innerRef={register}
+              innerRef={register({ required: true })}
             />
           </InputGroup>
           <InputGroup label="Password">
-            <Input type="password" name="password" innerRef={register} />
+            <Input
+              type="password"
+              name="password"
+              innerRef={register({ required: true })}
+            />
           </InputGroup>
           <div className={classes.loginOptions}>
             <label>
@@ -114,6 +122,7 @@ const Login = () => {
             type="submit"
             className={classes.submit}
             loading={loading.toString()}
+            disabled={!isValid}
           >
             Login
           </Button>
