@@ -5,10 +5,11 @@ import routes from "../../config/routes";
 import Login from "../../pages/Login";
 import Loader from "../Loader";
 import DefaultLayout from "./index";
-import { checkToken } from "../../actions/authAction";
+import { checkToken } from "../../actions/authActions";
 
 const AuthenticatedLayout = ({ children }) => {
-  const { isAuthenticated, loading } = useSelector((state) => state.auth);
+  const { isAuthenticated } = useSelector((state) => state.auth);
+  const loading = useSelector((state) => state.loaders.auth.check);
   const dispatch = useDispatch();
   const history = useHistory();
 

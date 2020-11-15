@@ -1,15 +1,16 @@
 import authAPI from "../api/auth";
+import authBrowserStorage from "../utils/authBrowserStorage";
 
 export const AUTH_LOGIN_START = "@auth/login/start";
 export const AUTH_LOGIN_SUCCESS = "@auth/login/success";
 export const AUTH_LOGIN_ERROR = "@auth/login/error";
 
-export const AUTH_CHECK = "@auth/check";
 export const AUTH_CHECK_ERROR = "@auth/check/error";
+export const AUTH_CHECK_SUCCESS = "@auth/check/success";
 
 export const AUTH_LOGOUT = "@auth/logout";
 
-export function login(email, password) {
+export function login(email, password, rememberMe = false) {
   return (dispatch) => {
     dispatch({
       type: AUTH_LOGIN_START,
@@ -18,8 +19,7 @@ export function login(email, password) {
     authAPI
       .login(email, password)
       .then(({ data }) => {
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("user", JSON.stringify(data.user));
+        authBrowserStorage.set(data.token, data.user, rememberMe);
         dispatch({ type: AUTH_LOGIN_SUCCESS, payload: data });
       })
       .catch((err) => {
@@ -31,26 +31,23 @@ export function login(email, password) {
 
 export function logout() {
   return (dispatch) => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+    authBrowserStorage.remove();
     dispatch({ type: AUTH_LOGOUT });
   };
 }
 
 export function checkToken() {
   return (dispatch) => {
-    const token = localStorage.getItem("token");
+    const { token, user } = authBrowserStorage.get();
     if (token) {
       authAPI
         .checkToken(token)
         .then(() => {
-          const user = JSON.parse(localStorage.getItem("user"));
           if (!user) throw new Error("user undefined");
-          dispatch({ type: AUTH_CHECK, payload: { token, user } });
+          dispatch({ type: AUTH_CHECK_SUCCESS, payload: { token, user } });
         })
         .catch(() => {
-          localStorage.removeItem("token");
-          localStorage.removeItem("user");
+          authBrowserStorage.remove();
           dispatch({ type: AUTH_CHECK_ERROR });
         });
     } else dispatch({ type: AUTH_CHECK_ERROR });

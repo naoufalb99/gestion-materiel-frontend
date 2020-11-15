@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default {
+const authAPI = {
   login(email, password) {
     return axios.post("/user/login", { email, password });
   },
@@ -9,3 +9,5 @@ export default {
     return axios.post("/user/check", { token });
   },
 };
+
+export default authAPI;

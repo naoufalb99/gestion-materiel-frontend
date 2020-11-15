@@ -2,9 +2,11 @@ import clsx from "clsx";
 import React from "react";
 import { createUseStyles } from "react-jss";
 import { Link } from "react-router-dom";
+import Spinner from "../Loader/Spinner";
 
 const useStyles = createUseStyles({
   button: {
+    userSelect: "none",
     outline: "none",
     backgroundColor: "#3454d1",
     color: "#FFF",
@@ -22,11 +24,32 @@ const useStyles = createUseStyles({
       color: "#3454d1",
     },
   },
+  disabledButton: {
+    cursor: "not-allowed",
+    pointerEvents: "none",
+    "&:hover": {
+      backgroundColor: "#3454d1",
+      color: "#FFF",
+    },
+  },
 });
 
 const Button = ({ className, ...props }) => {
   const classes = useStyles();
-  className = clsx(classes.button, className);
+
+  const loading = props.loading === "true";
+
+  if (loading) {
+    props.children = <Spinner dark={false} />;
+    props.disabled = true;
+  }
+
+  className = clsx(
+    classes.button,
+    props.disabled && classes.disabledButton,
+    className
+  );
+
   const { to } = props;
   if (to) {
     return <Link {...{ className, ...props }} />;

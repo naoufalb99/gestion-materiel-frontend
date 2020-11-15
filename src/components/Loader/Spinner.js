@@ -18,18 +18,20 @@ const useStyles = createUseStyles({
   },
   spinner: {
     position: "relative",
-    width: 66,
-    height: 66,
+    display: "inline-block",
+    width: 22,
+    height: 22,
     borderRadius: "100%",
-    border: "6px solid rgba(0, 0, 0, .14)",
-    borderTop: "6px solid rgba(0, 0, 0, .5)",
+    border: ({ color }) => `4px solid rgba(${color}, ${color}, ${color}, .24)`,
+    borderTop: ({ color }) =>
+      `4px solid rgba(${color}, ${color}, ${color}, .6)`,
     transform: "rotate(0)",
     animation: "$spinner 800ms infinite linear",
   },
 });
 
-const Spinner = ({ page = false }) => {
-  const classes = useStyles();
+const Spinner = ({ page = false, dark = true }) => {
+  const classes = useStyles({ color: dark ? 0 : 255 });
 
   if (!page) {
     return <div className={classes.spinner}></div>;

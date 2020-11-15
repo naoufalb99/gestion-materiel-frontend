@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { createUseStyles } from "react-jss";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { logout } from "../../actions/authAction";
+import { logout } from "../../actions/authActions";
 
 const useStyles = createUseStyles({
   wrapper: {

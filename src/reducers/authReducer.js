@@ -1,24 +1,18 @@
 import {
-  AUTH_CHECK,
-  AUTH_LOGIN_START,
+  AUTH_CHECK_SUCCESS,
   AUTH_LOGIN_SUCCESS,
-  AUTH_LOGIN_ERROR,
   AUTH_LOGOUT,
-  AUTH_CHECK_ERROR,
-} from "../actions/authAction";
+} from "../actions/authActions";
 
 const initialState = {
   user: null,
   token: null,
   isAuthenticated: false,
-  loading: true,
 };
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    case AUTH_LOGIN_START:
-      return { ...state, loading: true };
-    case AUTH_CHECK:
+    case AUTH_CHECK_SUCCESS:
     case AUTH_LOGIN_SUCCESS:
       const { payload } = action;
       return {
@@ -28,12 +22,9 @@ const authReducer = (state = initialState, action) => {
         token: payload.token,
         user: payload.user,
       };
-    case AUTH_LOGIN_ERROR:
-      return { ...state, loading: false };
 
-    case AUTH_CHECK_ERROR:
     case AUTH_LOGOUT:
-      return { ...initialState, loading: false };
+      return { ...initialState };
     default:
       return state;
   }
